@@ -1,0 +1,19 @@
+# Logs and local artifacts
+logs/
+*.log
+*.sql.gz
+*.png
+
+# Environment files
+.env
+*.env
+!*.env.example
+
+# Dependencies (managed inside each service repo)
+node_modules/
+venv/
+venv311/
+
+# IDE
+.idea/
+.vscode/
