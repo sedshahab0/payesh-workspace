@@ -17,3 +17,4 @@ venv311/
 # IDE
 .idea/
 .vscode/
+.cursor/

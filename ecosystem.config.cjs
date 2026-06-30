@@ -30,10 +30,10 @@ module.exports = {
       name: 'hoshmak-front',
       cwd: path.join(ROOT, 'hoshmak-front'),
       script: 'node_modules/.bin/vite',
-      args: 'preview --host 0.0.0.0 --port 4000 --strictPort',
+      args: '--host 0.0.0.0 --port 4000 --strictPort',
       interpreter: NODE20,
       env: {
-        NODE_ENV: 'production',
+        NODE_ENV: 'development',
       },
       error_file: path.join(LOG_DIR, 'hoshmak-front-error.log'),
       out_file: path.join(LOG_DIR, 'hoshmak-front-out.log'),
