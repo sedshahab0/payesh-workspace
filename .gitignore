@@ -18,3 +18,10 @@ venv311/
 .idea/
 .vscode/
 .cursor/
+
+# Service repos (cloned as siblings — see README)
+hoshmak-back/
+hoshmak-front/
+ai-services/
+content-production/
+deploy/

@@ -57,7 +57,35 @@ pm2 logs
 pm2 status
 ```
 
-## Production (Germany VPS)
+## Production deploy (GitHub)
+
+All Payesh services live on GitHub under [sedshahab0](https://github.com/sedshahab0).
+
+### First-time server setup (Germany VPS)
+
+```bash
+export GITHUB_TOKEN='ghp_...'   # read-only PAT — never commit this
+sudo -E bash -c 'curl -fsSL https://raw.githubusercontent.com/sedshahab0/payesh-deploy/main/bootstrap-from-github.sh | bash'
+```
+
+Or after `deploy/` is already on the server:
+
+```bash
+export GITHUB_TOKEN='ghp_...'
+sudo -E bash /opt/projects/deploy/bootstrap-from-github.sh
+```
+
+### Routine updates
+
+```bash
+export GITHUB_TOKEN='ghp_...'
+export PAYESH_PURGE_IRAN_CACHE=1
+sudo -E bash /opt/projects/deploy/update-from-github.sh
+```
+
+This pulls `main` from GitHub, rebuilds, reloads PM2, and optionally purges the Iran nginx cache.
+
+## Production (Germany VPS) — PM2 only
 
 ```bash
 # On server at /opt/projects
