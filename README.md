@@ -27,6 +27,8 @@ git clone https://github.com/sedshahab0/hoshmak-back.git
 git clone https://github.com/sedshahab0/hoshmak-front.git
 git clone https://github.com/sedshahab0/ai-services.git
 git clone https://github.com/sedshahab0/content-production.git
+git clone https://github.com/sedshahab0/auth-service.git authentication-and-authorization
+git clone https://github.com/sedshahab0/captcha-service.git captcha
 git clone https://github.com/sedshahab0/payesh-deploy.git deploy
 ```
 
@@ -40,8 +42,8 @@ git clone https://github.com/sedshahab0/payesh-deploy.git deploy
 | `content-news` | 8000 | News crawl API |
 | `content-translate` | 8001 | Translation API |
 | `content-reflection` | 8002 | Reflection search API |
-| `auth-service` | 4500 | Auth microservice (external repo) |
-| `captcha-service` | 8088 | Captcha service (external repo) |
+| `auth-service` | 4500 | Auth microservice |
+| `captcha-service` | 8088 | Captcha service |
 
 ## Local development
 
@@ -117,6 +119,8 @@ Load email secrets from `deploy/hoshmak-resend.env` on the server (see payesh-de
 | [hoshmak-front](https://github.com/sedshahab0/hoshmak-front) | React dashboard |
 | [ai-services](https://github.com/sedshahab0/ai-services) | LLM gateway |
 | [content-production](https://github.com/sedshahab0/content-production) | Python FastAPI |
+| [auth-service](https://github.com/sedshahab0/auth-service) | NestJS auth |
+| [captcha-service](https://github.com/sedshahab0/captcha-service) | NestJS captcha |
 | [payesh-deploy](https://github.com/sedshahab0/payesh-deploy) | Nginx, migrations, env templates |
 
 ## License
