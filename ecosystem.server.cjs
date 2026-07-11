@@ -1,7 +1,12 @@
 const path = require('path');
 
-const ROOT = '/opt/projects';
+const ROOT = process.env.PAYESH_ROOT || __dirname;
 const LOG_DIR = path.join(ROOT, 'logs');
+const PROCESS_POLICY = {
+  exp_backoff_restart_delay: 100,
+  listen_timeout: 10000,
+  kill_timeout: 5000,
+};
 
 module.exports = {
   apps: [
@@ -20,9 +25,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'hoshmak-back-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'hoshmak-front',
@@ -36,9 +41,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'hoshmak-front-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'ai-services',
@@ -52,9 +57,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'ai-services-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'content-news',
@@ -67,9 +72,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'content-news-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'content-translate',
@@ -82,9 +87,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'content-translate-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'auth-service',
@@ -100,9 +105,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'auth-service-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'captcha-service',
@@ -115,9 +120,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'captcha-service-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
     {
       name: 'content-reflection',
@@ -130,9 +135,9 @@ module.exports = {
       out_file: path.join(LOG_DIR, 'content-reflection-out.log'),
       merge_logs: true,
       autorestart: true,
-      restart_delay: 3000,
       max_restarts: 15,
       min_uptime: '10s',
+      ...PROCESS_POLICY,
     },
   ],
 };

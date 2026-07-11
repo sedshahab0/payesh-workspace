@@ -18,6 +18,10 @@ venv311/
 .idea/
 .vscode/
 .cursor/
+.VSCodeCounter/
+
+# Generated deployment state
+.deploy-cache/
 
 # Service repos (cloned as siblings — see README)
 hoshmak-back/
