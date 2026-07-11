@@ -27,7 +27,7 @@ module.exports = {
     {
       name: 'hoshmak-front',
       cwd: path.join(ROOT, 'hoshmak-front'),
-      script: 'node_modules/.bin/vite',
+      script: 'node_modules/vite/bin/vite.js',
       args: 'preview --host 0.0.0.0 --port 4000 --strictPort',
       env: {
         NODE_ENV: 'production',
