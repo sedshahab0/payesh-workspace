@@ -62,12 +62,37 @@ module.exports = {
       ...PROCESS_POLICY,
     },
     {
+      name: 'flaresolverr',
+      cwd: path.join(ROOT, 'content-production'),
+      script: 'docker',
+      args: 'compose -f docker-compose.flaresolverr.yml up',
+      error_file: path.join(LOG_DIR, 'flaresolverr-error.log'),
+      out_file: path.join(LOG_DIR, 'flaresolverr-out.log'),
+      merge_logs: true,
+      autorestart: true,
+      max_restarts: 15,
+      min_uptime: '10s',
+      ...PROCESS_POLICY,
+    },
+    {
       name: 'content-news',
       cwd: path.join(ROOT, 'content-production'),
       script: 'venv311/bin/uvicorn',
       args:
         'agencies:app --host 0.0.0.0 --port 8000 --workers 1 --limit-concurrency 1000 --timeout-keep-alive 30',
       interpreter: path.join(ROOT, 'content-production/venv311/bin/python'),
+      env: {
+        FLARESOLVERR_URL: 'http://127.0.0.1:8191/v1',
+        CRAWL_PLAYWRIGHT_ENABLED: 'true',
+        BACKEND_ADD_NEWS_URL:
+          'http://127.0.0.1:4002/api/ai/rasad-khabar/add-news-title',
+        BACKEND_ONBOARD_CALLBACK_URL:
+          'http://127.0.0.1:4002/api/ai/rasad-khabar/onboard-callback',
+        BACKEND_POLL_HEALTH_URL:
+          'http://127.0.0.1:4002/api/ai/rasad-khabar/source-poll-health',
+        CRAWL_CALLBACK_SECRET: 'payesh-crawl-secret',
+        CRAWL_POLL_INTERVAL_SEC: '90',
+      },
       error_file: path.join(LOG_DIR, 'content-news-error.log'),
       out_file: path.join(LOG_DIR, 'content-news-out.log'),
       merge_logs: true,
@@ -83,6 +108,10 @@ module.exports = {
       args:
         'translate:app --host 0.0.0.0 --port 8001 --workers 1 --limit-concurrency 1000 --timeout-keep-alive 30',
       interpreter: path.join(ROOT, 'content-production/venv311/bin/python'),
+      env: {
+        FLARESOLVERR_URL: 'http://127.0.0.1:8191/v1',
+        CRAWL_PLAYWRIGHT_ENABLED: 'true',
+      },
       error_file: path.join(LOG_DIR, 'content-translate-error.log'),
       out_file: path.join(LOG_DIR, 'content-translate-out.log'),
       merge_logs: true,
@@ -131,6 +160,10 @@ module.exports = {
       args:
         'news_reflection:app --host 0.0.0.0 --port 8002 --workers 1 --limit-concurrency 100 --timeout-keep-alive 120',
       interpreter: path.join(ROOT, 'content-production/venv311/bin/python'),
+      env: {
+        FLARESOLVERR_URL: 'http://127.0.0.1:8191/v1',
+        CRAWL_PLAYWRIGHT_ENABLED: 'true',
+      },
       error_file: path.join(LOG_DIR, 'content-reflection-error.log'),
       out_file: path.join(LOG_DIR, 'content-reflection-out.log'),
       merge_logs: true,
