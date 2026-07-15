@@ -163,6 +163,8 @@ module.exports = {
       env: {
         FLARESOLVERR_URL: 'http://127.0.0.1:8191/v1',
         CRAWL_PLAYWRIGHT_ENABLED: 'true',
+        REFLECTION_GROK_MODEL: 'grok-3-mini',
+        REFLECTION_GROK_REASONING_EFFORT: 'low',
       },
       error_file: path.join(LOG_DIR, 'content-reflection-error.log'),
       out_file: path.join(LOG_DIR, 'content-reflection-out.log'),
