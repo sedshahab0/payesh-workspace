@@ -116,6 +116,7 @@ module.exports = {
         CRAWL_ONBOARD_WORKER_CONCURRENCY: '2',
         CRAWL_ONBOARD_WORKER_POLL_SEC: '2',
         CRAWL_ONBOARD_HEARTBEAT_SEC: '15',
+        CRAWL_WORKER_COMPLETE_TIMEOUT_SEC: '120',
       },
       error_file: path.join(LOG_DIR, 'source-onboarding-worker-error.log'),
       out_file: path.join(LOG_DIR, 'source-onboarding-worker-out.log'),
