@@ -54,6 +54,7 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         DB_HOST: 'localhost',
+        SOURCE_AGENT_SECRET: process.env.SOURCE_AGENT_SECRET,
       },
       error_file: path.join(LOG_DIR, 'ai-services-error.log'),
       out_file: path.join(LOG_DIR, 'ai-services-out.log'),
@@ -111,6 +112,10 @@ module.exports = {
       env: {
         BACKEND_BASE_URL: 'http://127.0.0.1:4002',
         CRAWL_CALLBACK_SECRET: process.env.CRAWL_CALLBACK_SECRET,
+        SOURCE_TAXONOMY_AGENT_ENABLED: '1',
+        SOURCE_TAXONOMY_AGENT_URL:
+          'http://127.0.0.1:5000/api/ai-s/v1/source-taxonomy/analyze',
+        SOURCE_AGENT_SECRET: process.env.SOURCE_AGENT_SECRET,
         CRAWL_PLAYWRIGHT_ENABLED: 'true',
         FLARESOLVERR_URL: 'http://127.0.0.1:8191/v1',
         CRAWL_ONBOARD_WORKER_CONCURRENCY: '2',
